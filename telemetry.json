@@ -1,36 +1,36 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T01:38:39.256Z",
-  "commit": "d60441e",
+  "generatedAt": "2026-06-16T09:03:30.293Z",
+  "commit": "bc772ae",
   "suites": {
     "engine": {
-      "testFiles": 80,
-      "tests": 7674,
+      "testFiles": 83,
+      "tests": 8424,
       "skipped": 0
     },
     "apiServer": {
-      "testFiles": 51,
-      "tests": 688,
+      "testFiles": 52,
+      "tests": 702,
       "skipped": 5
     }
   },
   "assertionAudit": {
     "scope": "engine",
-    "total": 11993,
+    "total": 13330,
     "byClass": {
       "sourcing": 28,
-      "property": 1696,
-      "snapshot": 10027,
-      "other": 242
+      "property": 1737,
+      "snapshot": 11314,
+      "other": 251
     }
   },
   "signals": 40,
   "tracks": 13,
   "nightly": {
-    "runs": 22,
-    "syntheticCompanies": 440,
-    "snapshotAssertions": 5244,
+    "runs": 25,
+    "syntheticCompanies": 500,
+    "snapshotAssertions": 5963,
     "firstRunId": "2026-04-28-001",
-    "lastRunId": "2026-06-09-001"
+    "lastRunId": "2026-06-16-001"
   }
 }
