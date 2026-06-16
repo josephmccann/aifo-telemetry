@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-11T01:38:39.256Z",
+  "commit": "d60441e",
+  "suites": {
+    "engine": {
+      "testFiles": 80,
+      "tests": 7674,
+      "skipped": 0
+    },
+    "apiServer": {
+      "testFiles": 51,
+      "tests": 688,
+      "skipped": 5
+    }
+  },
+  "assertionAudit": {
+    "scope": "engine",
+    "total": 11993,
+    "byClass": {
+      "sourcing": 28,
+      "property": 1696,
+      "snapshot": 10027,
+      "other": 242
+    }
+  },
+  "signals": 40,
+  "tracks": 13,
+  "nightly": {
+    "runs": 22,
+    "syntheticCompanies": 440,
+    "snapshotAssertions": 5244,
+    "firstRunId": "2026-04-28-001",
+    "lastRunId": "2026-06-09-001"
+  }
+}
