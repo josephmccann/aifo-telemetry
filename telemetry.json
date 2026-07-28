@@ -1,44 +1,44 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-27T09:03:59.242Z",
-  "commit": "6e4dfbe",
+  "generatedAt": "2026-07-28T09:04:46.197Z",
+  "commit": "ae96aaa",
   "suites": {
     "engine": {
-      "testFiles": 162,
-      "tests": 16433,
-      "passed": 16433,
+      "testFiles": 146,
+      "tests": 10114,
+      "passed": 10114,
       "failed": 0,
       "skipped": 0,
       "todo": 0,
-      "total": 16433
+      "total": 10114
     },
     "apiServer": {
-      "testFiles": 115,
-      "tests": 1455,
-      "passed": 1455,
+      "testFiles": 116,
+      "tests": 1485,
+      "passed": 1485,
       "failed": 0,
       "skipped": 8,
       "todo": 0,
-      "total": 1463
+      "total": 1493
     }
   },
   "assertionAudit": {
     "scope": "financialEngine",
-    "total": 25835,
+    "total": 14112,
     "byClass": {
       "sourcing": 31,
-      "property": 1356,
-      "snapshot": 24235,
-      "other": 213
+      "property": 1385,
+      "snapshot": 12472,
+      "other": 224
     },
     "byScope": {
       "financialEngine": {
-        "total": 25835,
+        "total": 14112,
         "byClass": {
           "sourcing": 31,
-          "property": 1356,
-          "snapshot": 24235,
-          "other": 213
+          "property": 1385,
+          "snapshot": 12472,
+          "other": 224
         }
       },
       "uiComponents": {
@@ -60,12 +60,12 @@
         }
       },
       "infrastructure": {
-        "total": 1057,
+        "total": 2055,
         "byClass": {
-          "sourcing": 1,
-          "property": 536,
-          "snapshot": 369,
-          "other": 151
+          "sourcing": 4,
+          "property": 942,
+          "snapshot": 627,
+          "other": 482
         }
       }
     }
@@ -73,10 +73,15 @@
   "signals": 40,
   "tracks": 13,
   "nightly": {
-    "runs": 57,
-    "syntheticCompanies": 1140,
-    "snapshotAssertions": 13495,
+    "runs": 58,
+    "syntheticCompanies": 1171,
+    "snapshotAssertions": 13889,
     "firstRunId": "2026-04-28-001",
-    "lastRunId": "2026-07-27-001"
+    "lastRunId": "2026-07-28-001"
+  },
+  "assertionAccounting": {
+    "activeAssertions": 11797,
+    "lifetimeAuthoredAssertions": 24267,
+    "cumulativeVerifications": 11797
   }
 }
