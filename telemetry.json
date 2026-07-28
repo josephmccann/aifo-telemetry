@@ -1,53 +1,53 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-28T09:04:46.197Z",
-  "commit": "ae96aaa",
+  "generatedAt": "2026-07-28T21:50:17.193Z",
+  "commit": "14c694a",
   "suites": {
     "engine": {
-      "testFiles": 146,
-      "tests": 10114,
-      "passed": 10114,
+      "testFiles": 151,
+      "tests": 10283,
+      "passed": 10283,
       "failed": 0,
       "skipped": 0,
       "todo": 0,
-      "total": 10114
+      "total": 10283
     },
     "apiServer": {
-      "testFiles": 116,
-      "tests": 1485,
-      "passed": 1485,
+      "testFiles": 122,
+      "tests": 1578,
+      "passed": 1578,
       "failed": 0,
       "skipped": 8,
       "todo": 0,
-      "total": 1493
+      "total": 1586
     }
   },
   "assertionAudit": {
     "scope": "financialEngine",
-    "total": 14112,
+    "total": 14129,
     "byClass": {
       "sourcing": 31,
-      "property": 1385,
-      "snapshot": 12472,
-      "other": 224
+      "property": 1394,
+      "snapshot": 12478,
+      "other": 226
     },
     "byScope": {
       "financialEngine": {
-        "total": 14112,
+        "total": 14129,
         "byClass": {
           "sourcing": 31,
-          "property": 1385,
-          "snapshot": 12472,
-          "other": 224
+          "property": 1394,
+          "snapshot": 12478,
+          "other": 226
         }
       },
       "uiComponents": {
-        "total": 1083,
+        "total": 1127,
         "byClass": {
           "sourcing": 0,
-          "property": 666,
-          "snapshot": 269,
-          "other": 148
+          "property": 686,
+          "snapshot": 280,
+          "other": 161
         }
       },
       "endToEnd": {
@@ -60,12 +60,12 @@
         }
       },
       "infrastructure": {
-        "total": 2055,
+        "total": 2395,
         "byClass": {
           "sourcing": 4,
-          "property": 942,
-          "snapshot": 627,
-          "other": 482
+          "property": 1054,
+          "snapshot": 701,
+          "other": 636
         }
       }
     }
