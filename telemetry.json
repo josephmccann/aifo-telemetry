@@ -1,53 +1,53 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-28T21:50:17.193Z",
-  "commit": "14c694a",
+  "generatedAt": "2026-07-30T09:11:22.860Z",
+  "commit": "89cb0c9",
   "suites": {
     "engine": {
-      "testFiles": 151,
-      "tests": 10283,
-      "passed": 10283,
+      "testFiles": 156,
+      "tests": 10340,
+      "passed": 10340,
       "failed": 0,
       "skipped": 0,
       "todo": 0,
-      "total": 10283
+      "total": 10340
     },
     "apiServer": {
-      "testFiles": 122,
-      "tests": 1578,
-      "passed": 1578,
+      "testFiles": 133,
+      "tests": 1857,
+      "passed": 1857,
       "failed": 0,
       "skipped": 8,
       "todo": 0,
-      "total": 1586
+      "total": 1865
     }
   },
   "assertionAudit": {
     "scope": "financialEngine",
-    "total": 14129,
+    "total": 13976,
     "byClass": {
       "sourcing": 31,
       "property": 1394,
-      "snapshot": 12478,
+      "snapshot": 12325,
       "other": 226
     },
     "byScope": {
       "financialEngine": {
-        "total": 14129,
+        "total": 13976,
         "byClass": {
           "sourcing": 31,
           "property": 1394,
-          "snapshot": 12478,
+          "snapshot": 12325,
           "other": 226
         }
       },
       "uiComponents": {
-        "total": 1127,
+        "total": 1155,
         "byClass": {
           "sourcing": 0,
-          "property": 686,
-          "snapshot": 280,
-          "other": 161
+          "property": 708,
+          "snapshot": 285,
+          "other": 162
         }
       },
       "endToEnd": {
@@ -60,12 +60,12 @@
         }
       },
       "infrastructure": {
-        "total": 2395,
+        "total": 2632,
         "byClass": {
-          "sourcing": 4,
-          "property": 1054,
-          "snapshot": 701,
-          "other": 636
+          "sourcing": 5,
+          "property": 1192,
+          "snapshot": 773,
+          "other": 662
         }
       }
     }
@@ -73,15 +73,93 @@
   "signals": 40,
   "tracks": 13,
   "nightly": {
-    "runs": 58,
-    "syntheticCompanies": 1171,
-    "snapshotAssertions": 13889,
+    "runs": 59,
+    "syntheticCompanies": 1202,
+    "snapshotAssertions": 14267,
     "firstRunId": "2026-04-28-001",
-    "lastRunId": "2026-07-28-001"
+    "lastRunId": "2026-07-30-001",
+    "lastPromotedAt": "2026-07-30T09:05:01.552Z"
   },
   "assertionAccounting": {
-    "activeAssertions": 11797,
-    "lifetimeAuthoredAssertions": 24267,
-    "cumulativeVerifications": 11797
+    "activeAssertions": 11644,
+    "lifetimeAuthoredAssertions": 24930,
+    "cumulativeVerifications": 35238
+  },
+  "cohortComposition": {
+    "runId": "2026-07-30-001",
+    "companies": {
+      "total": 31,
+      "tierMix": 20,
+      "revenueBands": 5,
+      "archetypes": 6
+    },
+    "annualRevenueSpan": {
+      "min": 50000,
+      "max": 50000000
+    }
+  },
+  "fieldNotes": {
+    "notesVersion": 1,
+    "figures": [
+      {
+        "field": "assertionAccounting.activeAssertions",
+        "label": "Active assertions",
+        "counts": "The assertions the nightly suite actually executed tonight. This is the answer to \"what is being checked right now\".",
+        "canDecreaseWhen": "Snapshots age out of the retention window. Aged snapshots move to an archive directory inside the repository, excluded from the executing suite but fully retained and replayable, so this figure falling is retention working as designed and never evidence being discarded. It also falls when an approved engine change starts a new baseline generation, because prior generations are invalidated by that acceptance.",
+        "source": "docs/SIGNAL_METHODOLOGY.md, Assertion Accounting"
+      },
+      {
+        "field": "assertionAccounting.lifetimeAuthoredAssertions",
+        "label": "Lifetime authored assertions",
+        "counts": "Every assertion ever promoted into a committed snapshot, archived and superseded runs included. This is the answer to \"how much assertion evidence has been built\". Until assertions have been archived or superseded, every authored assertion is also an active assertion, so this figure can match the active count exactly. That is a young archive rather than the same value published under separate labels. The figures separate once retention ages snapshots out, and also when an accepted baseline supersedes a generation, which leaves those assertions authored but no longer active.",
+        "canDecreaseWhen": "Never. The generation ledger is append only, and archiving moves files without removing their ledger entries. A fall in this figure would mean the ledger had been rewritten.",
+        "source": "docs/SIGNAL_METHODOLOGY.md, Assertion Accounting"
+      },
+      {
+        "field": "assertionAccounting.cumulativeVerifications",
+        "label": "Cumulative verifications",
+        "counts": "Verification work performed across every recorded run. This is the answer to \"how much checking has actually happened\", which is a different question from how many distinct assertions exist. The per-run ledger began empty, so early in its life this figure can match the active count exactly. That is a young ledger rather than the same value published under separate labels. The figures separate as CREDITED runs accumulate, which is not the same as runs accumulating: a run that contributed nothing still records an entry, so the match can persist while the ledger grows.",
+        "canDecreaseWhen": "Never, and it deliberately undercounts: a run that went red, timed out, or failed capture records its outcome and contributes nothing, because a failed expectation skips the ones behind it and crediting the full count would inflate the figure. Runs predating the ledger contribute nothing either.",
+        "source": "docs/SIGNAL_METHODOLOGY.md, Assertion Accounting"
+      },
+      {
+        "field": "signals",
+        "label": "Signals",
+        "counts": "Distinct financial signals in the engine registry, base and composite together.",
+        "canDecreaseWhen": "A signal is retired from the registry. The published value is derived from the registry itself, never maintained by hand.",
+        "source": "docs/SIGNAL_METHODOLOGY.md"
+      },
+      {
+        "field": "cohortComposition.companies.total",
+        "label": "Companies in the nightly cohort",
+        "counts": "Synthetic companies the most recent evidenced run put through the engine, split into a tier mix, a revenue-band segment that anchors the span at both ends, and named archetypes engineered so that every signal in the registry has somewhere to fire.",
+        "canDecreaseWhen": "The cohort is deliberately resized, or a segment is removed. The segments are reconciled against the committed snapshot rather than inferred from it, so a total that stops adding up fails the build instead of being published.",
+        "source": "docs/decisions/2026-07-26-nightly-benchmark-coverage.md"
+      },
+      {
+        "field": "cohortComposition.annualRevenueSpan",
+        "label": "Annual revenue span exercised",
+        "counts": "The lowest and highest annual revenue the cohort reaches. The extremes are deterministic anchors rather than samples, so the span is exercised on every run instead of being approached on average.",
+        "canDecreaseWhen": "The band bounds are changed. The published span derives from those bounds, so it moves with them rather than being restated by hand.",
+        "source": "docs/SIGNAL_METHODOLOGY.md"
+      },
+      {
+        "field": "assertionAudit.total",
+        "label": "Audited engine assertions",
+        "counts": "Assertions a classifier attributes to the financial engine specifically, separated from user-interface, end-to-end, and infrastructure tests so engine rigor is not inflated by unrelated coverage. The per-scope breakdown ships beside it so the split can be audited rather than taken on trust.",
+        "canDecreaseWhen": "Engine assertions are removed, or the classifier reassigns them to another scope.",
+        "source": "artifacts/aifo/scripts/audit-scope.json"
+      }
+    ],
+    "certifies": [
+      "The suite was green at the stamped commit. A red suite publishes nothing at all rather than publishing a lower number, so an unchanged timestamp means a night did not promote, never that a night quietly passed.",
+      "Every signal in the registry fired in the archetype member mapped to it. Deterministic archetypes cover the full registry, and a signal that fails to fire fails the run and blocks promotion, so a published night is a night on which the whole catalog was exercised.",
+      "Every figure above was derived from artifacts committed to the repository at the stamped commit, not from a dashboard, a database, or a maintained spreadsheet. Anyone with the repository can recompute them."
+    ],
+    "doesNotProve": [
+      "That the engine's financial judgments are correct. These figures measure that the engine is stable, internally consistent, and exercised across its whole catalog. Whether its conclusions are the right conclusions is a separate question, answered by expert review rather than by counting assertions.",
+      "That the engine works on real customer books. The nightly cohort is synthetic by construction, generated to span a wide revenue range and to exercise every signal. Synthetic data can be made adversarial, but it cannot surprise the way a real ledger does.",
+      "That the tests are independently audited. These are our own assertions, run on our own infrastructure. They are reproducible by anyone who clones the repository, which is a real and checkable claim, and it is a weaker claim than external verification."
+    ]
   }
 }
