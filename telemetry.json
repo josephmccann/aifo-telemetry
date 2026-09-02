@@ -1,71 +1,71 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-01T23:46:54.263Z",
-  "commit": "8747735a",
+  "generatedAt": "2026-09-02T10:53:35.282Z",
+  "commit": "fb161da4",
   "suites": {
     "engine": {
-      "testFiles": 268,
-      "tests": 18392,
-      "passed": 18392,
+      "testFiles": 272,
+      "tests": 18876,
+      "passed": 18876,
       "failed": 0,
       "skipped": 3,
       "todo": 0,
-      "total": 18395
+      "total": 18879
     },
     "apiServer": {
-      "testFiles": 356,
-      "tests": 5370,
-      "passed": 5370,
+      "testFiles": 361,
+      "tests": 5446,
+      "passed": 5446,
       "failed": 0,
-      "skipped": 213,
+      "skipped": 214,
       "todo": 0,
-      "total": 5583
+      "total": 5660
     }
   },
   "assertionAudit": {
     "scope": "financialEngine",
-    "total": 21658,
+    "total": 22444,
     "byClass": {
       "sourcing": 72,
       "property": 2062,
-      "snapshot": 19138,
+      "snapshot": 19924,
       "other": 386
     },
     "byScope": {
       "financialEngine": {
-        "total": 21658,
+        "total": 22444,
         "byClass": {
           "sourcing": 72,
           "property": 2062,
-          "snapshot": 19138,
+          "snapshot": 19924,
           "other": 386
         }
       },
       "uiComponents": {
-        "total": 2787,
+        "total": 2810,
         "byClass": {
           "sourcing": 11,
-          "property": 1628,
-          "snapshot": 640,
-          "other": 508
+          "property": 1636,
+          "snapshot": 643,
+          "other": 520
         }
       },
       "endToEnd": {
-        "total": 67,
+        "total": 79,
         "byClass": {
           "sourcing": 0,
-          "property": 13,
-          "snapshot": 1,
-          "other": 53
+          "property": 14,
+          "snapshot": 3,
+          "other": 62
         }
       },
       "infrastructure": {
-        "total": 6775,
+        "total": 6837,
         "byClass": {
           "sourcing": 7,
-          "property": 3100,
-          "snapshot": 2103,
-          "other": 1565
+          "property": 3130,
+          "snapshot": 2126,
+          "other": 1574
         }
       }
     }
@@ -73,20 +73,20 @@
   "signals": 48,
   "tracks": 13,
   "nightly": {
-    "runs": 90,
-    "syntheticCompanies": 2317,
-    "snapshotAssertions": 28107,
+    "runs": 91,
+    "syntheticCompanies": 2355,
+    "snapshotAssertions": 28557,
     "firstRunId": "2026-04-28-001",
-    "lastRunId": "2026-09-01-004",
-    "lastPromotedAt": "2026-09-01T22:46:34.513Z"
+    "lastRunId": "2026-09-02-004",
+    "lastPromotedAt": "2026-09-02T10:39:38.142Z"
   },
   "assertionAccounting": {
-    "activeAssertions": 18300,
-    "lifetimeAuthoredAssertions": 49265,
-    "cumulativeVerifications": 448260
+    "activeAssertions": 19086,
+    "lifetimeAuthoredAssertions": 50051,
+    "cumulativeVerifications": 467346
   },
   "cohortComposition": {
-    "runId": "2026-09-01-004",
+    "runId": "2026-09-02-004",
     "companies": {
       "total": 38,
       "tierMix": 20,
@@ -161,36 +161,5 @@
       "That the engine works on real customer books. The nightly cohort is synthetic by construction, generated to span a wide revenue range and to exercise every signal. Synthetic data can be made adversarial, but it cannot surprise the way a real ledger does.",
       "That the tests are independently audited. These are our own assertions, run on our own infrastructure. They are reproducible by anyone who clones the repository, which is a real and checkable claim, and it is a weaker claim than external verification."
     ]
-  },
-  "suiteRetries": {
-    "apiServer": {
-      "retriedOnce": true,
-      "attempts": 3,
-      "files": [
-        "companyAdminRecovery.test.ts",
-        "secretScenarioProcess.test.ts"
-      ],
-      "allowlistEntries": [
-        {
-          "file": "companyAdminRecovery.test.ts",
-          "issue": "https://github.com/josephmccann/AI.FO-Demo/issues/724 (harness cross-file cleanup defect, aifo-8d)"
-        },
-        {
-          "file": "secretScenarioProcess.test.ts",
-          "issue": "https://github.com/josephmccann/AI.FO-Demo/issues/724 (harness cross-file cleanup defect, aifo-8d)"
-        }
-      ],
-      "firstAttemptFailures": [
-        "companyAdminRecovery.test.ts > company administrator recovery service serializes concurrent owner-local confirmation and replays one durable transition",
-        "companyAdminRecovery.test.ts > company administrator recovery service keeps failed delivery non-authoritative until idempotent resend replaces it",
-        "companyAdminRecovery.test.ts > company administrator recovery service reactivates one revoked membership and restores once",
-        "companyAdminRecovery.test.ts > company administrator recovery service fails closed at exact invitation expiry without a transition",
-        "secretScenarioProcess.test.ts > broker disposal and cleanup bounds repeated broker teardown when authorization completion never arrives",
-        "secretScenarioProcess.test.ts > broker disposal and cleanup waits for authorization descriptor completion after child reap",
-        "secretScenarioProcess.test.ts > broker disposal and cleanup maps authorization descriptor errors to fixed disposal failure after reap"
-      ],
-      "countsBasis": "published counts are the first full capture with the retried files' failures re-counted as passes",
-      "exitCodeAdvisory": null
-    }
   }
 }
