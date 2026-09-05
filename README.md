@@ -21,6 +21,39 @@ If the `stale` flag is ever set on the live endpoint, the published artifact has
 not refreshed within its tolerance window and the live engine cross-check is
 shown instead.
 
+## The definitions block (how to read and label the figures)
+
+The artifact carries a machine-readable `definitions` block: the contract a
+consumer follows to label each headline figure and to show freshness, so page
+copy and artifact copy cannot drift. It is generated from the same sources as the
+figures; no value or label in it is typed by a person.
+
+Availability: the `definitions` block appears in this mirrored `telemetry.json`
+after the first nightly pressure-test run following the merge of AI.FO-Demo PR
+#822 (the generator change that adds it). Until that nightly runs, the file has no
+`definitions` key. Consumers must treat the block as optional and degrade
+gracefully when it is absent.
+
+Freshness (`definitions.freshness`): carries `asOfField` (`generatedAt`),
+`commitField` (`commit`), `runIdField` (`nightly.lastRunId`), and `maxAgeHours`
+(26). Render the freshness as "as of {generatedAt} (run {lastRunId}, commit
+{commit})" together with a derived fresh or stale state. Treat the figures as
+stale when `generatedAt` is older than `maxAgeHours`, or when `lastRunId`'s date
+is behind the newest scheduled nightly (a promotion check: a hand refresh can
+reset the age clock while no new run promoted). Never render a static "Live".
+Consumers of the live getaifo.com endpoint may instead read the `stale` and
+`staleReasons` fields directly.
+
+Headline figures (`definitions.headline`): two lists, `perRun` and `cumulative`.
+Each entry has a `key`, a `label`, a `field` (a dotted path into this artifact,
+for example `cohortComposition.companies.total`), a `kind`, a `definition` (the
+public copy for that figure), and a `computedFrom` (its provenance). Consumers
+must: read each value by resolving its `field` in the artifact, never hardcode a
+number or a label; render the `definition` string verbatim; and never present a
+`cumulative` figure (which carries a `since` marking where its total starts) under
+a per-run label. Per-run keys describe the latest run or the registry as it stands
+now; cumulative keys describe committed history since `nightly.firstRunId`.
+
 ## The assertion accounting (three figures, no substitutions)
 
 Beginning with the first promoted nightly run after 2026-07-27, the artifact
