@@ -1,71 +1,71 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-05T06:24:44.646Z",
-  "commit": "ba78e6b9",
+  "generatedAt": "2026-09-07T06:24:55.800Z",
+  "commit": "d4ae4235",
   "suites": {
     "engine": {
-      "testFiles": 275,
-      "tests": 20294,
-      "passed": 20294,
+      "testFiles": 292,
+      "tests": 20920,
+      "passed": 20920,
       "failed": 0,
       "skipped": 3,
       "todo": 0,
-      "total": 20297
+      "total": 20923
     },
     "apiServer": {
-      "testFiles": 361,
-      "tests": 5480,
-      "passed": 5480,
+      "testFiles": 370,
+      "tests": 5549,
+      "passed": 5549,
       "failed": 0,
       "skipped": 214,
       "todo": 0,
-      "total": 5694
+      "total": 5763
     }
   },
   "assertionAudit": {
     "scope": "financialEngine",
-    "total": 24856,
+    "total": 25726,
     "byClass": {
       "sourcing": 72,
-      "property": 2062,
-      "snapshot": 22336,
-      "other": 386
+      "property": 2042,
+      "snapshot": 23204,
+      "other": 408
     },
     "byScope": {
       "financialEngine": {
-        "total": 24856,
+        "total": 25726,
         "byClass": {
           "sourcing": 72,
-          "property": 2062,
-          "snapshot": 22336,
-          "other": 386
+          "property": 2042,
+          "snapshot": 23204,
+          "other": 408
         }
       },
       "uiComponents": {
-        "total": 2890,
+        "total": 3052,
         "byClass": {
           "sourcing": 11,
-          "property": 1671,
-          "snapshot": 655,
-          "other": 553
+          "property": 1773,
+          "snapshot": 695,
+          "other": 573
         }
       },
       "endToEnd": {
-        "total": 79,
+        "total": 108,
         "byClass": {
-          "sourcing": 0,
-          "property": 14,
+          "sourcing": 2,
+          "property": 15,
           "snapshot": 3,
-          "other": 62
+          "other": 88
         }
       },
       "infrastructure": {
-        "total": 6871,
+        "total": 7104,
         "byClass": {
           "sourcing": 7,
-          "property": 3146,
-          "snapshot": 2139,
-          "other": 1579
+          "property": 3251,
+          "snapshot": 2222,
+          "other": 1624
         }
       }
     }
@@ -73,20 +73,20 @@
   "signals": 48,
   "tracks": 13,
   "nightly": {
-    "runs": 94,
-    "syntheticCompanies": 2469,
-    "snapshotAssertions": 29934,
+    "runs": 95,
+    "syntheticCompanies": 2507,
+    "snapshotAssertions": 30423,
     "firstRunId": "2026-04-28-001",
-    "lastRunId": "2026-09-05-001",
-    "lastPromotedAt": "2026-09-05T06:10:42.464Z"
+    "lastRunId": "2026-09-07-001",
+    "lastPromotedAt": "2026-09-07T06:10:43.416Z"
   },
   "assertionAccounting": {
-    "activeAssertions": 21498,
-    "lifetimeAuthoredAssertions": 52463,
-    "cumulativeVerifications": 529398
+    "activeAssertions": 22362,
+    "lifetimeAuthoredAssertions": 53327,
+    "cumulativeVerifications": 573258
   },
   "cohortComposition": {
-    "runId": "2026-09-05-001",
+    "runId": "2026-09-07-001",
     "companies": {
       "total": 38,
       "tierMix": 20,
@@ -149,6 +149,27 @@
         "counts": "Assertions a classifier attributes to the financial engine specifically, separated from user-interface, end-to-end, and infrastructure tests so engine rigor is not inflated by unrelated coverage. The per-scope breakdown ships beside it so the split can be audited rather than taken on trust.",
         "canDecreaseWhen": "Engine assertions are removed, or the classifier reassigns them to another scope.",
         "source": "artifacts/aifo/scripts/audit-scope.json"
+      },
+      {
+        "field": "tracks",
+        "label": "Industry tracks",
+        "counts": "The industry tracks the engine carries in its registry, each a lens the same signals are read through. The published value derives from the registry itself, never maintained by hand.",
+        "canDecreaseWhen": "A track is retired from the registry. The value derives from the registry, so it moves only when the registry itself loses a track.",
+        "source": "docs/SIGNAL_METHODOLOGY.md"
+      },
+      {
+        "field": "nightly.runs",
+        "label": "Nightly runs in the ledger",
+        "counts": "The count of committed, evidenced nightly runs in the snapshot ledger, archived runs included. It is a cumulative history figure: every promoted run leaves a committed snapshot and aged runs move to an archive rather than being discarded, so it answers how many nights of evidence have accumulated.",
+        "canDecreaseWhen": "Never. The ledger is append only and archiving moves files without removing their history, so a fall would mean committed history had been rewritten.",
+        "source": "docs/decisions/2026-07-26-nightly-benchmark-coverage.md"
+      },
+      {
+        "field": "nightly.syntheticCompanies",
+        "label": "Synthetic companies to date",
+        "counts": "The cumulative total of synthetic companies put through the engine across every committed run, archived runs included. It answers how much synthetic exposure has accumulated over the recorded history rather than how large the latest cohort is.",
+        "canDecreaseWhen": "Retention and rewrite semantics match the other cumulative committed-history figures: archived runs stay counted, so it does not fall as snapshots age, and a fall would mean committed history had been rewritten.",
+        "source": "docs/decisions/2026-07-26-nightly-benchmark-coverage.md"
       }
     ],
     "certifies": [
@@ -161,5 +182,82 @@
       "That the engine works on real customer books. The nightly cohort is synthetic by construction, generated to span a wide revenue range and to exercise every signal. Synthetic data can be made adversarial, but it cannot surprise the way a real ledger does.",
       "That the tests are independently audited. These are our own assertions, run on our own infrastructure. They are reproducible by anyone who clones the repository, which is a real and checkable claim, and it is a weaker claim than external verification."
     ]
+  },
+  "definitions": {
+    "definitionsVersion": 1,
+    "freshness": {
+      "asOfField": "generatedAt",
+      "commitField": "commit",
+      "runIdField": "nightly.lastRunId",
+      "promotedAtField": "nightly.lastPromotedAt",
+      "maxAgeHours": 26,
+      "rule": "Render 'as of {generatedAt} (run {lastRunId}, commit {commit})' and a derived fresh or stale state. Treat as stale when generatedAt is older than maxAgeHours, or when nightly.lastPromotedAt is behind the newest scheduled nightly fire (a manual refresh can advance the run date without a scheduled promotion, so compare promotion time, not the run-id date alone). The api-server telemetry route holds the authoritative schedule and grace semantics. Never render a static 'Live'.",
+      "staleSignal": "Consumers of /api/telemetry read stale and staleReasons directly; consumers of the raw mirror apply the rule above."
+    },
+    "headline": {
+      "perRun": [
+        {
+          "key": "signals",
+          "label": "Signals",
+          "field": "signals",
+          "kind": "registry",
+          "definition": "Distinct financial signals in the engine registry, base and composite together.",
+          "computedFrom": "Object.keys(SIGNAL_IDS).length in the engine registry; derived, never hand-maintained."
+        },
+        {
+          "key": "tracks",
+          "label": "Industry tracks",
+          "field": "tracks",
+          "kind": "registry",
+          "definition": "The industry tracks the engine carries in its registry, each a lens the same signals are read through. The published value derives from the registry itself, never maintained by hand.",
+          "computedFrom": "TRACK_IDS.length from src/config/tracks.js."
+        },
+        {
+          "key": "companiesLatestRun",
+          "label": "Companies, latest cohort",
+          "field": "cohortComposition.companies.total",
+          "kind": "latestRun",
+          "definition": "Synthetic companies the most recent evidenced run put through the engine, split into a tier mix, a revenue-band segment that anchors the span at both ends, and named archetypes engineered so that every signal in the registry has somewhere to fire.",
+          "computedFrom": "the most recent evidenced run's committed cohort."
+        },
+        {
+          "key": "assertionsLatestRun",
+          "label": "Assertions checked tonight",
+          "field": "assertionAccounting.activeAssertions",
+          "kind": "latestRun",
+          "definition": "The assertions the nightly suite actually executed tonight. This is the answer to \"what is being checked right now\".",
+          "computedFrom": "assertions the nightly executed in the current run."
+        }
+      ],
+      "cumulative": [
+        {
+          "key": "runsCumulative",
+          "label": "Nightly runs in the ledger",
+          "field": "nightly.runs",
+          "kind": "cumulative",
+          "since": "2026-04-28-001",
+          "definition": "The count of committed, evidenced nightly runs in the snapshot ledger, archived runs included. It is a cumulative history figure: every promoted run leaves a committed snapshot and aged runs move to an archive rather than being discarded, so it answers how many nights of evidence have accumulated. Cumulative since 2026-04-28-001.",
+          "computedFrom": "count of committed snapshot files, archived included."
+        },
+        {
+          "key": "syntheticCompaniesCumulative",
+          "label": "Synthetic companies to date",
+          "field": "nightly.syntheticCompanies",
+          "kind": "cumulative",
+          "since": "2026-04-28-001",
+          "definition": "The cumulative total of synthetic companies put through the engine across every committed run, archived runs included. It answers how much synthetic exposure has accumulated over the recorded history rather than how large the latest cohort is. Cumulative since 2026-04-28-001.",
+          "computedFrom": "sum of the company count in every committed snapshot header."
+        },
+        {
+          "key": "verificationsCumulative",
+          "label": "Verifications to date",
+          "field": "assertionAccounting.cumulativeVerifications",
+          "kind": "cumulative",
+          "since": "2026-07-28-001",
+          "definition": "Verification work performed across every recorded run. This is the answer to \"how much checking has actually happened\", which is a different question from how many distinct assertions exist. The per-run ledger began empty, so early in its life this figure can match the active count exactly. That is a young ledger rather than the same value published under separate labels. The figures separate as CREDITED runs accumulate, which is not the same as runs accumulating: a run that contributed nothing still records an entry, so the match can persist while the ledger grows. Cumulative since 2026-07-28-001.",
+          "computedFrom": "verification work recorded in the per-run ledger, which begins after the snapshot ledger."
+        }
+      ]
+    }
   }
 }
