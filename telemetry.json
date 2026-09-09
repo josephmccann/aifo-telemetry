@@ -1,52 +1,52 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-08T08:46:36.894Z",
-  "commit": "d87fcf97",
+  "generatedAt": "2026-09-09T06:25:21.716Z",
+  "commit": "2437b502",
   "suites": {
     "engine": {
       "testFiles": 294,
-      "tests": 21381,
-      "passed": 21381,
+      "tests": 21383,
+      "passed": 21383,
       "failed": 0,
       "skipped": 3,
       "todo": 0,
-      "total": 21384
+      "total": 21386
     },
     "apiServer": {
-      "testFiles": 370,
-      "tests": 5549,
-      "passed": 5549,
+      "testFiles": 371,
+      "tests": 5590,
+      "passed": 5590,
       "failed": 0,
       "skipped": 214,
       "todo": 0,
-      "total": 5763
+      "total": 5804
     }
   },
   "assertionAudit": {
     "scope": "financialEngine",
-    "total": 26530,
+    "total": 26526,
     "byClass": {
       "sourcing": 72,
       "property": 2042,
-      "snapshot": 24008,
+      "snapshot": 24004,
       "other": 408
     },
     "byScope": {
       "financialEngine": {
-        "total": 26530,
+        "total": 26526,
         "byClass": {
           "sourcing": 72,
           "property": 2042,
-          "snapshot": 24008,
+          "snapshot": 24004,
           "other": 408
         }
       },
       "uiComponents": {
-        "total": 3056,
+        "total": 3067,
         "byClass": {
           "sourcing": 11,
-          "property": 1777,
-          "snapshot": 695,
+          "property": 1789,
+          "snapshot": 694,
           "other": 573
         }
       },
@@ -73,20 +73,20 @@
   "signals": 48,
   "tracks": 13,
   "nightly": {
-    "runs": 96,
-    "syntheticCompanies": 2545,
-    "snapshotAssertions": 30882,
+    "runs": 97,
+    "syntheticCompanies": 2583,
+    "snapshotAssertions": 31345,
     "firstRunId": "2026-04-28-001",
-    "lastRunId": "2026-09-08-001",
-    "lastPromotedAt": "2026-09-08T08:32:18.322Z"
+    "lastRunId": "2026-09-09-001",
+    "lastPromotedAt": "2026-09-09T06:11:05.110Z"
   },
   "assertionAccounting": {
-    "activeAssertions": 23166,
-    "lifetimeAuthoredAssertions": 54131,
-    "cumulativeVerifications": 596424
+    "activeAssertions": 23162,
+    "lifetimeAuthoredAssertions": 54943,
+    "cumulativeVerifications": 619586
   },
   "cohortComposition": {
-    "runId": "2026-09-08-001",
+    "runId": "2026-09-09-001",
     "companies": {
       "total": 38,
       "tierMix": 20,
