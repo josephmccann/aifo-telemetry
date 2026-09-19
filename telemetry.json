@@ -1,43 +1,43 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-18T09:23:27.068Z",
-  "commit": "73a589bb",
+  "generatedAt": "2026-09-19T09:23:10.848Z",
+  "commit": "283f8b78",
   "suites": {
     "engine": {
-      "testFiles": 313,
-      "tests": 21690,
-      "passed": 21690,
+      "testFiles": 314,
+      "tests": 22139,
+      "passed": 22139,
       "failed": 0,
       "skipped": 4,
       "todo": 0,
-      "total": 21694
+      "total": 22143
     },
     "apiServer": {
-      "testFiles": 386,
-      "tests": 5921,
-      "passed": 5921,
+      "testFiles": 391,
+      "tests": 5972,
+      "passed": 5972,
       "failed": 0,
-      "skipped": 346,
+      "skipped": 364,
       "todo": 0,
-      "total": 6267
+      "total": 6336
     }
   },
   "assertionAudit": {
     "scope": "financialEngine",
-    "total": 26500,
+    "total": 27284,
     "byClass": {
       "sourcing": 72,
       "property": 2042,
-      "snapshot": 23978,
+      "snapshot": 24762,
       "other": 408
     },
     "byScope": {
       "financialEngine": {
-        "total": 26500,
+        "total": 27284,
         "byClass": {
           "sourcing": 72,
           "property": 2042,
-          "snapshot": 23978,
+          "snapshot": 24762,
           "other": 408
         }
       },
@@ -73,20 +73,20 @@
   "signals": 48,
   "tracks": 13,
   "nightly": {
-    "runs": 106,
-    "syntheticCompanies": 2925,
-    "snapshotAssertions": 35573,
+    "runs": 107,
+    "syntheticCompanies": 2963,
+    "snapshotAssertions": 36022,
     "firstRunId": "2026-04-28-001",
-    "lastRunId": "2026-09-18-001",
-    "lastPromotedAt": "2026-09-18T09:10:22.010Z"
+    "lastRunId": "2026-09-19-001",
+    "lastPromotedAt": "2026-09-19T09:10:06.263Z"
   },
   "assertionAccounting": {
-    "activeAssertions": 23136,
-    "lifetimeAuthoredAssertions": 62373,
-    "cumulativeVerifications": 827634
+    "activeAssertions": 23920,
+    "lifetimeAuthoredAssertions": 63157,
+    "cumulativeVerifications": 851554
   },
   "cohortComposition": {
-    "runId": "2026-09-18-001",
+    "runId": "2026-09-19-001",
     "companies": {
       "total": 38,
       "tierMix": 20,
