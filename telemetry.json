@@ -1,43 +1,43 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-21T09:23:20.966Z",
-  "commit": "7241535a",
+  "generatedAt": "2026-09-22T09:24:10.196Z",
+  "commit": "5355c8d5",
   "suites": {
     "engine": {
       "testFiles": 314,
-      "tests": 22141,
-      "passed": 22141,
+      "tests": 22139,
+      "passed": 22139,
       "failed": 0,
       "skipped": 4,
       "todo": 0,
-      "total": 22145
+      "total": 22143
     },
     "apiServer": {
       "testFiles": 391,
-      "tests": 5983,
-      "passed": 5983,
+      "tests": 5997,
+      "passed": 5997,
       "failed": 0,
       "skipped": 364,
       "todo": 0,
-      "total": 6347
+      "total": 6361
     }
   },
   "assertionAudit": {
     "scope": "financialEngine",
-    "total": 27288,
+    "total": 27284,
     "byClass": {
       "sourcing": 72,
       "property": 2042,
-      "snapshot": 24766,
+      "snapshot": 24762,
       "other": 408
     },
     "byScope": {
       "financialEngine": {
-        "total": 27288,
+        "total": 27284,
         "byClass": {
           "sourcing": 72,
           "property": 2042,
-          "snapshot": 24766,
+          "snapshot": 24762,
           "other": 408
         }
       },
@@ -73,20 +73,20 @@
   "signals": 48,
   "tracks": 13,
   "nightly": {
-    "runs": 109,
-    "syntheticCompanies": 3039,
-    "snapshotAssertions": 36964,
+    "runs": 110,
+    "syntheticCompanies": 3077,
+    "snapshotAssertions": 37441,
     "firstRunId": "2026-04-28-001",
-    "lastRunId": "2026-09-21-001",
-    "lastPromotedAt": "2026-09-21T09:10:23.597Z"
+    "lastRunId": "2026-09-22-001",
+    "lastPromotedAt": "2026-09-22T09:11:07.558Z"
   },
   "assertionAccounting": {
-    "activeAssertions": 23924,
-    "lifetimeAuthoredAssertions": 64813,
-    "cumulativeVerifications": 899414
+    "activeAssertions": 23920,
+    "lifetimeAuthoredAssertions": 65653,
+    "cumulativeVerifications": 923334
   },
   "cohortComposition": {
-    "runId": "2026-09-21-001",
+    "runId": "2026-09-22-001",
     "companies": {
       "total": 38,
       "tierMix": 20,
