@@ -1,110 +1,103 @@
 # AI.FO Engine Telemetry
 
-Machine-generated telemetry for the AI.FO financial engine. `telemetry.json` is
-regenerated after every green nightly pressure-test run and mirrored here
-automatically. It is never hand-edited.
+Public, machine-generated test telemetry for the AI.FO financial engine. The
+repository holds one file, `telemetry.json`, and its git history is the public
+record of how the figures have moved over time. Nothing here is hand-edited.
 
-The file reports, each measured at a specific commit:
+## Status
 
-- the engine and API test-suite counts,
-- the assertion-audit breakdown (sourcing, property, snapshot, other),
-- the financial-signal and industry-track counts,
-- the nightly pressure-test ledger (runs, synthetic companies, snapshot assertions).
+Active. The file is replaced automatically after each green nightly
+pressure-test run that promotes new figures (one commit per change, subject
+`mirror telemetry from AI.FO-Demo@<sha>`). The `generatedAt` and `commit`
+fields say when and against which engine commit the figures were measured.
 
-The numbers shown at https://getaifo.com/how-we-test are served from this file.
-The source of truth is the engine's own test suite and assertion classifier; the
-artifact is produced by `generate-telemetry.js` in the engine repository and
-copied here on each change. The git history of this file is the public record of
-how those numbers have moved over time.
+## What the file reports
 
-If the `stale` flag is ever set on the live endpoint, the published artifact has
-not refreshed within its tolerance window and the live engine cross-check is
-shown instead.
+- `suites`: engine and API test-suite counts (passed, failed, skipped, total).
+- `assertionAudit`: assertion counts by class (sourcing, property, snapshot,
+  other) and by scope.
+- `signals`, `tracks`: registered financial signals and industry tracks.
+- `nightly`: the pressure-test ledger (runs, synthetic companies, snapshot
+  assertions, first and last run IDs, last promotion time).
+- `assertionAccounting`: three separate figures, never substituted for each
+  other:
+  - `activeAssertions`: what the nightly suite executed. It can decrease when
+    aged snapshots move to the in-repo archive; that is retention, not lost
+    evidence.
+  - `lifetimeAuthoredAssertions`: every assertion ever authored, from an
+    append-only ledger. It never decreases.
+  - `cumulativeVerifications`: verification work summed across every nightly
+    run. Runs that were not green contribute zero, a deliberate undercount.
+- `cohortComposition`: the shape of the latest nightly cohort (tier-mix,
+  revenue-band, and archetype companies; annual revenue span).
+- `fieldNotes`: plain-language notes on what each figure counts, when it can
+  decrease, what a green night certifies, and what it does not prove.
+- `definitions`: the labeling contract for consumers (see below).
 
-## The definitions block (how to read and label the figures)
+## Reading the `definitions` block
 
-The artifact carries a machine-readable `definitions` block: the contract a
-consumer follows to label each headline figure and to show freshness, so page
-copy and artifact copy cannot drift. It is generated from the same sources as the
-figures; no value or label in it is typed by a person.
+- `definitions.freshness` names the fields to show (`generatedAt`, `commit`,
+  `nightly.lastRunId`, `nightly.lastPromotedAt`) and `maxAgeHours` (26).
+  Render "as of {generatedAt} (run {lastRunId}, commit {commit})" with a
+  derived fresh or stale state; never render a static "Live". Treat the
+  figures as stale when `generatedAt` is older than `maxAgeHours` or when
+  `nightly.lastPromotedAt` is behind the newest scheduled nightly (compare
+  promotion time, not the run-id date alone). Consumers of `/api/telemetry`
+  read its `stale` and `staleReasons` fields instead; consumers of this raw
+  file apply the rule themselves.
+- `definitions.headline.perRun` and `definitions.headline.cumulative` list the
+  headline figures. Each entry has a `key`, `label`, `field` (a dotted path into
+  this file), `kind`, `definition`, and `computedFrom`. Resolve each value from
+  its `field` rather than hardcoding numbers or labels, render `definition`
+  verbatim, and never show a `cumulative` figure under a per-run label.
 
-Availability: the `definitions` block appears in this mirrored `telemetry.json`
-after the first nightly pressure-test run following the merge of AI.FO-Demo PR
-#822 (the generator change that adds it). Until that nightly runs, the file has no
-`definitions` key. Consumers must treat the block as optional and degrade
-gracefully when it is absent.
+## What a green night means
 
-Freshness (`definitions.freshness`): carries `asOfField` (`generatedAt`),
-`commitField` (`commit`), `runIdField` (`nightly.lastRunId`), and `maxAgeHours`
-(26). Render the freshness as "as of {generatedAt} (run {lastRunId}, commit
-{commit})" together with a derived fresh or stale state. Treat the figures as
-stale when `generatedAt` is older than `maxAgeHours`, or when `lastRunId`'s date
-is behind the newest scheduled nightly (a promotion check: a hand refresh can
-reset the age clock while no new run promoted). Never render a static "Live".
-Consumers of the live getaifo.com endpoint may instead read the `stale` and
-`staleReasons` fields directly.
+The nightly cohort mixes randomized health tiers, revenue bands spanning
+$50,000 to $50,000,000 in annual revenue, and deterministic archetype
+companies. A coverage gate requires every registered signal to fire in its
+mapped archetype; if one does not, the run fails and nothing promotes. A new
+`telemetry.json` here therefore means the full suites passed, every registered
+signal fired as expected that night, and the run's snapshot evidence was
+committed to the engine repository.
 
-Headline figures (`definitions.headline`): two lists, `perRun` and `cumulative`.
-Each entry has a `key`, a `label`, a `field` (a dotted path into this artifact,
-for example `cohortComposition.companies.total`), a `kind`, a `definition` (the
-public copy for that figure), and a `computedFrom` (its provenance). Consumers
-must: read each value by resolving its `field` in the artifact, never hardcode a
-number or a label; render the `definition` string verbatim; and never present a
-`cumulative` figure (which carries a `since` marking where its total starts) under
-a per-run label. Per-run keys describe the latest run or the registry as it stands
-now; cumulative keys describe committed history since `nightly.firstRunId`.
+## How it is produced and deployed
 
-## The assertion accounting (three figures, no substitutions)
+1. On a green nightly run, `generate-telemetry.js` in the private engine
+   repository regenerates `telemetry.json` from the test suites, the assertion
+   classifier, the signal registry, and the committed ledgers. It refuses to
+   run on a red suite or a dirty working tree.
+2. The artifact is committed to the engine repository's `master` branch.
+3. A GitHub Actions workflow there (`mirror-telemetry`) copies the file to
+   `main` in this repository whenever it changes on `master`. It always
+   mirrors `master`, and skips the commit when the file is unchanged.
 
-Beginning with the first promoted nightly run after 2026-07-27, the artifact
-carries an `assertionAccounting` block with three distinct figures. Each answers
-a different question, and none ever stands in for another:
+There is no build, CI, or deploy step in this repository.
 
-- **activeAssertions**: the regression evidence that executes tonight. The
-  nightly suite uses a bounded retention window (the trailing thirty days of
-  snapshots plus one representative per calendar month of history), so this
-  figure can DECREASE when aged snapshots move to the in-repo archive. A
-  decrease here is retention working, not evidence lost.
-- **lifetimeAuthoredAssertions**: the sum over every snapshot ever authored,
-  recorded in an append-only ledger committed to the engine repository.
-  Archived snapshots keep their ledger entries, remain in the repository, and
-  are replayable against their recorded engine commit. This figure never
-  decreases.
-- **cumulativeVerifications**: successful verification work performed to date,
-  summed across a per-run ledger that records every nightly execution. Runs
-  that did not complete green contribute zero, a deliberate undercount.
+## Consumers
 
-The reason for the split: a single headline number invites conflating what ran
-tonight with what has accumulated over months. Publishing all three, labeled,
-is the honest version.
+- `https://app.getaifo.com/api/telemetry` reads the raw file from this
+  repository (`main/telemetry.json`), caches it for five minutes, falls back to
+  a bundled copy if the mirror is unreachable, and adds `stale`,
+  `staleReasons`, and `staleStats` from its own freshness and live-registry
+  checks.
+- `https://getaifo.com/api/telemetry` proxies that endpoint, and the page at
+  https://getaifo.com/how-we-test renders it.
 
-## What a green night certifies
+## Running and testing locally
 
-The nightly cohort is generated in three segments: a randomized health-tier
-mix, revenue-band members spanning fifty thousand to fifty million dollars in
-annual revenue, and deterministic archetype companies. An armed coverage gate
-requires every registered financial signal to fire in its mapped archetype
-member; if any does not, the run fails and no snapshot or telemetry promotes
-(the failure itself is recorded). So a refreshed `telemetry.json` here means:
-the full test suites passed, every registered signal demonstrated its firing
-behavior that night, and the run's snapshot evidence was committed to the
-engine repository.
+There is no code to run. To check the file is valid JSON:
 
-The canonical definitions of the cohort bands, sampling rules, and assertion
-accounting live in the engine repository's `docs/SIGNAL_METHODOLOGY.md`, the
-single methodology authority. This README describes; that document defines.
+```sh
+python3 -m json.tool telemetry.json > /dev/null && echo ok
+```
 
-## Provenance chain
+## Environment variables
 
-1. The nightly runs from a dedicated clone, hard-reset to the engine
-   repository's `master` before every run.
-2. On a green run, `generate-telemetry.js` regenerates `telemetry.json` from
-   the suites, the assertion classifier, the signal registry, and the committed
-   ledgers. The generator refuses to run on a dirty tree or a red suite.
-3. The artifact commits to the engine repository, stamped with the commit it
-   measured (`commit` and `generatedAt` fields).
-4. A repository workflow copies it here whenever it changes on `master`.
-5. The live endpoint at getaifo.com reads this mirror at request time.
+None. This repository has no code or configuration.
 
-No number in the artifact is typed by a person. Values are derived at
-generation time or the generator refuses.
+## Where the definitions live
+
+The methodology (cohort bands and sampling, assertion accounting) is defined in
+`docs/SIGNAL_METHODOLOGY.md` in the private engine repository. This README
+describes the published file; that document defines it.
