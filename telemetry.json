@@ -1,53 +1,53 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-02T09:29:33.201Z",
-  "commit": "1cc25503",
+  "generatedAt": "2026-10-05T04:06:58.005Z",
+  "commit": "49f23624",
   "suites": {
     "engine": {
-      "testFiles": 342,
-      "tests": 23345,
-      "passed": 23345,
+      "testFiles": 358,
+      "tests": 23150,
+      "passed": 23150,
       "failed": 0,
       "skipped": 4,
       "todo": 0,
-      "total": 23349
+      "total": 23154
     },
     "apiServer": {
-      "testFiles": 433,
-      "tests": 6690,
-      "passed": 6690,
+      "testFiles": 485,
+      "tests": 7173,
+      "passed": 7173,
       "failed": 0,
-      "skipped": 461,
+      "skipped": 607,
       "todo": 0,
-      "total": 7151
+      "total": 7780
     }
   },
   "assertionAudit": {
     "scope": "financialEngine",
-    "total": 28299,
+    "total": 27549,
     "byClass": {
       "sourcing": 72,
       "property": 2066,
-      "snapshot": 25748,
+      "snapshot": 24998,
       "other": 413
     },
     "byScope": {
       "financialEngine": {
-        "total": 28299,
+        "total": 27549,
         "byClass": {
           "sourcing": 72,
           "property": 2066,
-          "snapshot": 25748,
+          "snapshot": 24998,
           "other": 413
         }
       },
       "uiComponents": {
-        "total": 3958,
+        "total": 4280,
         "byClass": {
           "sourcing": 14,
-          "property": 2315,
-          "snapshot": 890,
-          "other": 739
+          "property": 2466,
+          "snapshot": 955,
+          "other": 845
         }
       },
       "endToEnd": {
@@ -60,12 +60,12 @@
         }
       },
       "infrastructure": {
-        "total": 8314,
+        "total": 8409,
         "byClass": {
           "sourcing": 8,
-          "property": 3826,
-          "snapshot": 2478,
-          "other": 2002
+          "property": 3879,
+          "snapshot": 2487,
+          "other": 2035
         }
       }
     }
@@ -73,20 +73,20 @@
   "signals": 48,
   "tracks": 13,
   "nightly": {
-    "runs": 119,
-    "syntheticCompanies": 3419,
-    "snapshotAssertions": 41772,
+    "runs": 121,
+    "syntheticCompanies": 3495,
+    "snapshotAssertions": 42717,
     "firstRunId": "2026-04-28-001",
-    "lastRunId": "2026-10-02-001",
-    "lastPromotedAt": "2026-10-02T09:12:45.676Z"
+    "lastRunId": "2026-10-05-001",
+    "lastPromotedAt": "2026-10-05T03:47:33.847Z"
   },
   "assertionAccounting": {
-    "activeAssertions": 24858,
-    "lifetimeAuthoredAssertions": 73289,
-    "cumulativeVerifications": 1141688
+    "activeAssertions": 24108,
+    "lifetimeAuthoredAssertions": 74951,
+    "cumulativeVerifications": 1190706
   },
   "cohortComposition": {
-    "runId": "2026-10-02-001",
+    "runId": "2026-10-05-001",
     "companies": {
       "total": 38,
       "tierMix": 20,
@@ -258,6 +258,26 @@
           "computedFrom": "verification work recorded in the per-run ledger, which begins after the snapshot ledger."
         }
       ]
+    }
+  },
+  "suiteRetries": {
+    "apiServer": {
+      "retriedOnce": true,
+      "attempts": 1,
+      "files": [
+        "recoverySecretScenario.test.ts"
+      ],
+      "allowlistEntries": [
+        {
+          "file": "recoverySecretScenario.test.ts",
+          "issue": "https://github.com/josephmccann/AI.FO-Demo/issues/724 (harness cross-file cleanup defect, aifo-8d)"
+        }
+      ],
+      "firstAttemptFailures": [
+        "recoverySecretScenario.test.ts > opaque recovery secret scenario exposes only the exact frozen zero-argument capability surface"
+      ],
+      "countsBasis": "published counts are the first full capture with the retried files' failures re-counted as passes",
+      "exitCodeAdvisory": null
     }
   }
 }
