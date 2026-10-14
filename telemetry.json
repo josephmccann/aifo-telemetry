@@ -1,53 +1,53 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-13T09:31:38.967Z",
-  "commit": "6327d429",
+  "generatedAt": "2026-10-14T09:33:26.395Z",
+  "commit": "e0687614",
   "suites": {
     "engine": {
-      "testFiles": 395,
-      "tests": 24422,
-      "passed": 24422,
+      "testFiles": 397,
+      "tests": 24453,
+      "passed": 24453,
       "failed": 0,
       "skipped": 4,
       "todo": 0,
-      "total": 24426
+      "total": 24457
     },
     "apiServer": {
       "testFiles": 547,
-      "tests": 8517,
-      "passed": 8517,
+      "tests": 8534,
+      "passed": 8534,
       "failed": 0,
-      "skipped": 1017,
+      "skipped": 1026,
       "todo": 0,
-      "total": 9534
+      "total": 9560
     }
   },
   "assertionAudit": {
     "scope": "financialEngine",
-    "total": 28437,
+    "total": 28457,
     "byClass": {
       "sourcing": 72,
       "property": 2117,
-      "snapshot": 25803,
+      "snapshot": 25823,
       "other": 445
     },
     "byScope": {
       "financialEngine": {
-        "total": 28437,
+        "total": 28457,
         "byClass": {
           "sourcing": 72,
           "property": 2117,
-          "snapshot": 25803,
+          "snapshot": 25823,
           "other": 445
         }
       },
       "uiComponents": {
-        "total": 5466,
+        "total": 5493,
         "byClass": {
           "sourcing": 14,
-          "property": 3072,
+          "property": 3097,
           "snapshot": 1221,
-          "other": 1159
+          "other": 1161
         }
       },
       "endToEnd": {
@@ -60,12 +60,12 @@
         }
       },
       "infrastructure": {
-        "total": 8521,
+        "total": 8532,
         "byClass": {
           "sourcing": 8,
-          "property": 3921,
-          "snapshot": 2515,
-          "other": 2077
+          "property": 3922,
+          "snapshot": 2522,
+          "other": 2080
         }
       }
     }
@@ -73,20 +73,20 @@
   "signals": 48,
   "tracks": 13,
   "nightly": {
-    "runs": 129,
-    "syntheticCompanies": 3799,
-    "snapshotAssertions": 46486,
+    "runs": 130,
+    "syntheticCompanies": 3837,
+    "snapshotAssertions": 46970,
     "firstRunId": "2026-04-28-001",
-    "lastRunId": "2026-10-13-001",
-    "lastPromotedAt": "2026-10-13T09:13:32.930Z"
+    "lastRunId": "2026-10-14-001",
+    "lastPromotedAt": "2026-10-14T09:15:00.518Z"
   },
   "assertionAccounting": {
-    "activeAssertions": 24878,
-    "lifetimeAuthoredAssertions": 81577,
-    "cumulativeVerifications": 1391496
+    "activeAssertions": 24898,
+    "lifetimeAuthoredAssertions": 82431,
+    "cumulativeVerifications": 1416394
   },
   "cohortComposition": {
-    "runId": "2026-10-13-001",
+    "runId": "2026-10-14-001",
     "companies": {
       "total": 38,
       "tierMix": 20,
