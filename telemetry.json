@@ -1,53 +1,53 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-28T09:39:02.603Z",
-  "commit": "c5acd962",
+  "generatedAt": "2026-11-04T02:20:28.710Z",
+  "commit": "212c7094",
   "suites": {
     "engine": {
-      "testFiles": 443,
-      "tests": 24493,
-      "passed": 24493,
+      "testFiles": 487,
+      "tests": 24356,
+      "passed": 24356,
       "failed": 0,
       "skipped": 4,
       "todo": 0,
-      "total": 24497
+      "total": 24360
     },
     "apiServer": {
-      "testFiles": 673,
-      "tests": 10784,
-      "passed": 10784,
+      "testFiles": 750,
+      "tests": 12902,
+      "passed": 12902,
       "failed": 0,
-      "skipped": 1390,
+      "skipped": 1546,
       "todo": 0,
-      "total": 12174
+      "total": 14448
     }
   },
   "assertionAudit": {
     "scope": "financialEngine",
-    "total": 26229,
+    "total": 23595,
     "byClass": {
-      "sourcing": 72,
-      "property": 2193,
-      "snapshot": 23462,
-      "other": 502
+      "sourcing": 84,
+      "property": 2487,
+      "snapshot": 20397,
+      "other": 627
     },
     "byScope": {
       "financialEngine": {
-        "total": 26229,
+        "total": 23595,
         "byClass": {
-          "sourcing": 72,
-          "property": 2193,
-          "snapshot": 23462,
-          "other": 502
+          "sourcing": 84,
+          "property": 2487,
+          "snapshot": 20397,
+          "other": 627
         }
       },
       "uiComponents": {
-        "total": 6515,
+        "total": 7210,
         "byClass": {
           "sourcing": 14,
-          "property": 3692,
-          "snapshot": 1410,
-          "other": 1399
+          "property": 4101,
+          "snapshot": 1540,
+          "other": 1555
         }
       },
       "endToEnd": {
@@ -60,12 +60,12 @@
         }
       },
       "infrastructure": {
-        "total": 8658,
+        "total": 9019,
         "byClass": {
           "sourcing": 8,
-          "property": 3978,
-          "snapshot": 2548,
-          "other": 2124
+          "property": 4143,
+          "snapshot": 2655,
+          "other": 2213
         }
       }
     }
@@ -73,20 +73,20 @@
   "signals": 48,
   "tracks": 13,
   "nightly": {
-    "runs": 141,
-    "syntheticCompanies": 4255,
-    "snapshotAssertions": 52171,
+    "runs": 142,
+    "syntheticCompanies": 4293,
+    "snapshotAssertions": 52635,
     "firstRunId": "2026-04-28-001",
-    "lastRunId": "2026-10-28-001",
-    "lastPromotedAt": "2026-10-28T09:16:29.089Z"
+    "lastRunId": "2026-11-04-002",
+    "lastPromotedAt": "2026-11-04T01:58:25.048Z"
   },
   "assertionAccounting": {
-    "activeAssertions": 22462,
-    "lifetimeAuthoredAssertions": 91579,
-    "cumulativeVerifications": 1677552
+    "activeAssertions": 19090,
+    "lifetimeAuthoredAssertions": 92393,
+    "cumulativeVerifications": 1831414
   },
   "cohortComposition": {
-    "runId": "2026-10-28-001",
+    "runId": "2026-11-04-002",
     "companies": {
       "total": 38,
       "tierMix": 20,
